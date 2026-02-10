@@ -39,7 +39,7 @@
         border-radius: 30px;
         cursor: pointer;
         position: absolute;
-        transition: 0.2s;
+        transition: none; /* 🔥 УБРАЛИ ПЛАВНОСТЬ */
     }
 
     #yes {
@@ -73,7 +73,7 @@
     const noButton = document.getElementById("no");
     const container = document.querySelector(".buttons");
 
-    noButton.addEventListener("mouseover", () => {
+    function moveNoButton() {
         const maxX = container.clientWidth - noButton.offsetWidth;
         const maxY = container.clientHeight - noButton.offsetHeight;
 
@@ -82,7 +82,11 @@
 
         noButton.style.left = randomX + "px";
         noButton.style.top = randomY + "px";
-    });
+    }
+
+    // 😈 убегает МГНОВЕННО
+    noButton.addEventListener("mouseenter", moveNoButton);
+    noButton.addEventListener("mouseover", moveNoButton);
 
     document.getElementById("yes").addEventListener("click", () => {
         document.body.innerHTML = `
@@ -100,6 +104,11 @@
             </div>
         `;
     });
+</script>
+
+</body>
+</html>
+
 </script>
 
 </body>
