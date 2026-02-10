@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Valentine</title>
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
@@ -15,12 +16,30 @@
         justify-content: center;
         align-items: center;
         font-family: 'Playfair Display', serif;
-        color: white;
         overflow: hidden;
+    }
+
+    /* 📜 paper background */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 40px;
+        background: #f5e6c8;
+        border-radius: 6px;
+        z-index: -1;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 25px;
+        border: 1px solid rgba(255,255,255,0.25);
+        z-index: -2;
     }
 
     .container {
         text-align: center;
+        color: #5b1a1a;
     }
 
     .love {
@@ -32,9 +51,10 @@
     .question {
         font-size: 32px;
         margin-bottom: 50px;
+        line-height: 1.4;
     }
 
-    /* ЗОНА ДЛЯ КНОПОК */
+    /* buttons area */
     .buttons-area {
         position: relative;
         width: 320px;
@@ -48,16 +68,13 @@
         font-size: 14px;
         letter-spacing: 2px;
         border-radius: 40px;
-        border: 1px solid rgba(255,255,255,0.8);
+        border: 1px solid rgba(91,26,26,0.6);
         background: transparent;
-        color: white;
+        color: #5b1a1a;
         cursor: pointer;
         white-space: nowrap;
         user-select: none;
         transition: none;
-        width: auto;           /* 🔒 НЕ РАСТЯГИВАТЬ */
-        min-width: unset;
-        max-width: unset;
     }
 
     #yes {
@@ -71,7 +88,7 @@
     }
 
     button:hover {
-        background: rgba(255,255,255,0.08);
+        background: rgba(91,26,26,0.06);
     }
 </style>
 </head>
@@ -132,7 +149,7 @@
                 text-align:center;
             ">
                 <h1 style="font-family:'Great Vibes', cursive; font-size:64px;">
-                  🤍
+                    I knew it 🤍
                 </h1>
                 <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="220">
             </div>
