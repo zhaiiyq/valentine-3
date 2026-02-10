@@ -18,7 +18,7 @@
 
     .container {
         text-align: center;
-        z-index: 1;
+        position: relative;
     }
 
     h1 {
@@ -29,8 +29,8 @@
 
     .buttons {
         position: relative;
-        width: 400px;
-        height: 200px;
+        width: 360px;
+        height: 120px;
         margin: 0 auto;
     }
 
@@ -41,22 +41,22 @@
         border-radius: 30px;
         cursor: pointer;
         position: absolute;
-        transition: none; /* 🚫 никакой плавности */
+        transition: none;
         user-select: none;
     }
 
     #yes {
         background-color: #ff4d6d;
         color: white;
-        left: 40px;
-        top: 80px;
+        left: 0;
+        top: 30px;
     }
 
     #no {
         background-color: white;
         color: #ff4d6d;
-        left: 220px;
-        top: 80px;
+        right: 0;
+        top: 30px;
     }
 </style>
 </head>
@@ -65,14 +65,15 @@
 
 <div class="container">
     <h1>Will you be my Valentine? 💖</h1>
-</div>
 
-<button id="yes">Yes 💘</button>
-<button id="no">No 💔</button>
+    <div class="buttons">
+        <button id="yes">Yes 💘</button>
+        <button id="no">No 💔</button>
+    </div>
+</div>
 
 <script>
     const noButton = document.getElementById("no");
-    const yesButton = document.getElementById("yes");
 
     function moveNoButton() {
         const padding = 20;
@@ -83,11 +84,12 @@
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
 
+        noButton.style.position = "fixed";
         noButton.style.left = randomX + "px";
         noButton.style.top = randomY + "px";
     }
 
-    // 🧠 чувствует курсор ЗАРАНЕЕ
+    // реагирует ЗАРАНЕЕ
     document.addEventListener("mousemove", (e) => {
         const rect = noButton.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
@@ -99,10 +101,9 @@
         }
     });
 
-    // 🖱️ защита от клика
     noButton.addEventListener("mousedown", moveNoButton);
 
-    yesButton.addEventListener("click", () => {
+    document.getElementById("yes").addEventListener("click", () => {
         document.body.innerHTML = `
             <div style="
                 height:100vh;
@@ -118,11 +119,6 @@
             </div>
         `;
     });
-</script>
-
-</body>
-</html>
-
 </script>
 
 </body>
