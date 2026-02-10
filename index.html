@@ -71,13 +71,11 @@
 
 <script>
     const noButton = document.getElementById("no");
-    const yesButton = document.getElementById("yes");
+    const container = document.querySelector(".buttons");
 
     function moveNoButton() {
-        const padding = 20;
-
-        const maxX = window.innerWidth - noButton.offsetWidth - padding;
-        const maxY = window.innerHeight - noButton.offsetHeight - padding;
+        const maxX = container.clientWidth - noButton.offsetWidth;
+        const maxY = container.clientHeight - noButton.offsetHeight;
 
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
@@ -86,22 +84,11 @@
         noButton.style.top = randomY + "px";
     }
 
-    // 🧠 чувствует курсор ЗАРАНЕЕ
-    document.addEventListener("mousemove", (e) => {
-        const rect = noButton.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
+    // 😈 убегает МГНОВЕННО
+    noButton.addEventListener("mouseenter", moveNoButton);
+    noButton.addEventListener("mouseover", moveNoButton);
 
-        if (distance < 120) {
-            moveNoButton();
-        }
-    });
-
-    // 🖱️ защита от клика
-    noButton.addEventListener("mousedown", moveNoButton);
-
-    yesButton.addEventListener("click", () => {
+    document.getElementById("yes").addEventListener("click", () => {
         document.body.innerHTML = `
             <div style="
                 height:100vh;
@@ -113,7 +100,7 @@
                 text-align:center;
                 color:white;
             ">
-                <h1>YAAAAAY 💕<br>You are my Valentine 💘</h1>
+                <h1>YAAAAAY 💕</h1>
             </div>
         `;
     });
