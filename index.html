@@ -13,7 +13,6 @@
         align-items: center;
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
         font-family: Arial, sans-serif;
-        overflow: hidden;
     }
 
     .container {
@@ -26,30 +25,43 @@
         margin-bottom: 40px;
     }
 
-    #yes {
+    /* Большая зона для кнопок */
+    .playground {
+        position: relative;
+        width: 500px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .buttons {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 30px;
+    }
+
+    button {
         padding: 15px 35px;
         font-size: 20px;
         border: none;
         border-radius: 30px;
         cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+    }
+
+    #yes {
         background-color: #ff4d6d;
         color: white;
-        user-select: none;
     }
 
     #no {
-        padding: 15px 35px;
-        font-size: 20px;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
         background-color: white;
         color: #ff4d6d;
-        position: fixed;
-        left: 55%;
-        top: 55%;
-        user-select: none;
-        white-space: nowrap;
+        position: absolute;
+        left: 180px; /* старт рядом с Yes */
     }
 </style>
 </head>
@@ -58,19 +70,22 @@
 
 <div class="container">
     <h1>Will you be my Valentine? 💖</h1>
-    <button id="yes">Yes 💘</button>
-</div>
 
-<button id="no">No 💔</button>
+    <div class="playground">
+        <div class="buttons">
+            <button id="yes">Yes 💘</button>
+            <button id="no">No 💔</button>
+        </div>
+    </div>
+</div>
 
 <script>
     const noButton = document.getElementById("no");
+    const playground = document.querySelector(".playground");
 
     function moveNoButton() {
-        const padding = 20;
-
-        const maxX = window.innerWidth - noButton.offsetWidth - padding;
-        const maxY = window.innerHeight - noButton.offsetHeight - padding;
+        const maxX = playground.clientWidth - noButton.offsetWidth;
+        const maxY = playground.clientHeight - noButton.offsetHeight;
 
         const x = Math.random() * maxX;
         const y = Math.random() * maxY;
@@ -79,18 +94,8 @@
         noButton.style.top = y + "px";
     }
 
-    document.addEventListener("mousemove", (e) => {
-        const rect = noButton.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 120) {
-            moveNoButton();
-        }
-    });
-
-    noButton.addEventListener("mousedown", moveNoButton);
+    noButton.addEventListener("mouseenter", moveNoButton);
+    noButton.addEventListener("mouseover", moveNoButton);
 
     document.getElementById("yes").addEventListener("click", () => {
         document.body.innerHTML = `
@@ -101,8 +106,8 @@
                 align-items:center;
                 background:linear-gradient(135deg, #ff9a9e, #fad0c4);
                 font-family: Arial;
-                text-align:center;
                 color:white;
+                text-align:center;
             ">
                 <h1>YAAAAAY 💕<br>You are my Valentine 💘</h1>
             </div>
