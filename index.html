@@ -26,34 +26,30 @@
         margin-bottom: 40px;
     }
 
-    .buttons {
-        position: relative;
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-    }
-
-    button {
+    #yes {
         padding: 15px 35px;
         font-size: 20px;
         border: none;
         border-radius: 30px;
         cursor: pointer;
-        user-select: none;
-        white-space: nowrap;
-    }
-
-    #yes {
         background-color: #ff4d6d;
         color: white;
+        user-select: none;
     }
 
     #no {
+        padding: 15px 35px;
+        font-size: 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
         background-color: white;
         color: #ff4d6d;
-        position: fixed;       /* 👈 сразу fixed */
-        width: auto;           /* 👈 не растягивается */
-        max-width: fit-content;
+        position: fixed;
+        left: 55%;
+        top: 55%;
+        user-select: none;
+        white-space: nowrap;
     }
 </style>
 </head>
@@ -62,12 +58,10 @@
 
 <div class="container">
     <h1>Will you be my Valentine? 💖</h1>
-
-    <div class="buttons">
-        <button id="yes">Yes 💘</button>
-        <button id="no">No 💔</button>
-    </div>
+    <button id="yes">Yes 💘</button>
 </div>
+
+<button id="no">No 💔</button>
 
 <script>
     const noButton = document.getElementById("no");
@@ -85,7 +79,6 @@
         noButton.style.top = y + "px";
     }
 
-    // убегает при приближении
     document.addEventListener("mousemove", (e) => {
         const rect = noButton.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
@@ -119,4 +112,3 @@
 
 </body>
 </html>
-
