@@ -2,73 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>💌 Valentine</title>
+<title>Valentine</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
     body {
         margin: 0;
         height: 100vh;
+        background: #8b0015; /* глубокий красный */
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: 'Arial', sans-serif;
+        font-family: 'Playfair Display', serif;
+        color: #fff;
         overflow: hidden;
     }
 
     .container {
         text-align: center;
+        max-width: 600px;
+        padding: 40px;
     }
 
-    h1 {
-        font-size: 48px;
-        color: #fff;
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+        opacity: 0.7;
+        margin-bottom: 30px;
+        text-transform: lowercase;
+    }
+
+    .heart {
+        font-family: 'Great Vibes', cursive;
+        font-size: 56px;
         margin-bottom: 30px;
     }
 
-    .buttons {
+    .question {
+        font-size: 28px;
+        font-weight: 400;
+        margin-bottom: 50px;
+    }
+
+    .buttons-area {
         position: relative;
         width: 320px;
-        height: 160px;
-        margin: 0 auto 30px;
+        height: 120px;
+        margin: 0 auto;
     }
 
     button {
-        padding: 15px 30px;
-        font-size: 20px;
-        border: none;
-        border-radius: 30px;
+        padding: 10px 28px;
+        font-size: 14px;
+        border-radius: 40px;
+        border: 1px solid rgba(255,255,255,0.7);
+        background: transparent;
+        color: #fff;
         cursor: pointer;
+        letter-spacing: 1px;
         position: absolute;
         transition: none;
         user-select: none;
-        white-space: nowrap;
     }
 
     #yes {
-        background-color: #ff4d6d;
-        color: white;
-        left: 30px;
-        top: 60px;
+        left: 40px;
+        top: 40px;
     }
 
     #no {
-        background-color: white;
-        color: #ff4d6d;
-        left: 180px;
-        top: 60px;
+        right: 40px;
+        top: 40px;
     }
 
-    /* 🐱 котики */
-    .cats {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    .cats img {
-        width: 120px;
-        border-radius: 20px;
+    button:hover {
+        background: rgba(255,255,255,0.1);
     }
 </style>
 </head>
@@ -76,43 +86,43 @@
 <body>
 
 <div class="container">
-    <h1>Will you be my Valentine? 💖</h1>
+    <div class="subtitle">strawberry flavor</div>
 
-    <div class="buttons">
-        <button id="yes">Yes 💘</button>
-        <button id="no">No 💔</button>
+    <div class="heart">Dear</div>
+
+    <div class="question">
+        Will you open your heart<br>
+        and be my Valentine?
     </div>
 
-    <div class="cats">
-        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="cat">
-        <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat">
-        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cat">
+    <div class="buttons-area">
+        <button id="yes">YES</button>
+        <button id="no">NO</button>
     </div>
 </div>
 
 <script>
     const noButton = document.getElementById("no");
-    const container = document.querySelector(".buttons");
+    const area = document.querySelector(".buttons-area");
 
     function moveNoButton() {
-        const maxX = container.clientWidth - noButton.offsetWidth;
-        const maxY = container.clientHeight - noButton.offsetHeight;
+        const maxX = area.clientWidth - noButton.offsetWidth;
+        const maxY = area.clientHeight - noButton.offsetHeight;
 
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
 
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
     }
 
-    // ⚡ реагирует ЗАРАНЕЕ, а не когда уже навели
-    container.addEventListener("mousemove", (e) => {
+    area.addEventListener("mousemove", (e) => {
         const rect = noButton.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
         const dy = e.clientY - (rect.top + rect.height / 2);
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 80) {
+        if (distance < 70) {
             moveNoButton();
         }
     });
@@ -121,18 +131,20 @@
         document.body.innerHTML = `
             <div style="
                 height:100vh;
+                background:#8b0015;
                 display:flex;
                 justify-content:center;
                 align-items:center;
-                background:linear-gradient(135deg, #ff9a9e, #fad0c4);
-                font-family: Arial;
-                text-align:center;
-                color:white;
                 flex-direction:column;
-                gap:20px;
+                color:white;
+                font-family:'Playfair Display', serif;
+                text-align:center;
+                gap:30px;
             ">
-                <h1>YAAAAAY 💕</h1>
-                <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
+                <h1 style="font-family:'Great Vibes', cursive; font-size:64px;">
+                    I knew it 🤍
+                </h1>
+                <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="220">
             </div>
         `;
     });
