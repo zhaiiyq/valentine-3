@@ -13,6 +13,7 @@
         align-items: center;
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
         font-family: 'Arial', sans-serif;
+        overflow: hidden;
     }
 
     .container {
@@ -22,14 +23,14 @@
     h1 {
         font-size: 48px;
         color: #fff;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .buttons {
         position: relative;
-        width: 300px;
-        height: 150px;
-        margin: 0 auto;
+        width: 320px;
+        height: 160px;
+        margin: 0 auto 30px;
     }
 
     button {
@@ -39,21 +40,35 @@
         border-radius: 30px;
         cursor: pointer;
         position: absolute;
-        transition: none; /* 🔥 УБРАЛИ ПЛАВНОСТЬ */
+        transition: none;
+        user-select: none;
+        white-space: nowrap;
     }
 
     #yes {
         background-color: #ff4d6d;
         color: white;
         left: 30px;
-        top: 50px;
+        top: 60px;
     }
 
     #no {
         background-color: white;
         color: #ff4d6d;
-        left: 170px;
-        top: 50px;
+        left: 180px;
+        top: 60px;
+    }
+
+    /* 🐱 котики */
+    .cats {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .cats img {
+        width: 120px;
+        border-radius: 20px;
     }
 </style>
 </head>
@@ -66,6 +81,12 @@
     <div class="buttons">
         <button id="yes">Yes 💘</button>
         <button id="no">No 💔</button>
+    </div>
+
+    <div class="cats">
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="cat">
+        <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="cat">
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cat">
     </div>
 </div>
 
@@ -84,9 +105,17 @@
         noButton.style.top = randomY + "px";
     }
 
-    // 😈 убегает МГНОВЕННО
-    noButton.addEventListener("mouseenter", moveNoButton);
-    noButton.addEventListener("mouseover", moveNoButton);
+    // ⚡ реагирует ЗАРАНЕЕ, а не когда уже навели
+    container.addEventListener("mousemove", (e) => {
+        const rect = noButton.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 80) {
+            moveNoButton();
+        }
+    });
 
     document.getElementById("yes").addEventListener("click", () => {
         document.body.innerHTML = `
@@ -99,8 +128,11 @@
                 font-family: Arial;
                 text-align:center;
                 color:white;
+                flex-direction:column;
+                gap:20px;
             ">
                 <h1>YAAAAAY 💕</h1>
+                <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
             </div>
         `;
     });
