@@ -4,48 +4,37 @@
 <meta charset="UTF-8">
 <title>Valentine</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
     body {
         margin: 0;
         height: 100vh;
-        background: #8b0015; /* глубокий красный */
+        background: #8b0015;
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: 'Playfair Display', serif;
-        color: #fff;
+        color: white;
         overflow: hidden;
     }
 
     .container {
         text-align: center;
-        max-width: 600px;
-        padding: 40px;
     }
 
-    .subtitle {
-        font-size: 14px;
-        letter-spacing: 2px;
-        opacity: 0.7;
-        margin-bottom: 30px;
-        text-transform: lowercase;
-    }
-
-    .heart {
+    .love {
         font-family: 'Great Vibes', cursive;
-        font-size: 56px;
-        margin-bottom: 30px;
+        font-size: 64px;
+        margin-bottom: 20px;
     }
 
     .question {
-        font-size: 28px;
-        font-weight: 400;
+        font-size: 32px;
         margin-bottom: 50px;
     }
 
+    /* ЗОНА ДЛЯ КНОПОК */
     .buttons-area {
         position: relative;
         width: 320px;
@@ -54,17 +43,21 @@
     }
 
     button {
-        padding: 10px 28px;
-        font-size: 14px;
-        border-radius: 40px;
-        border: 1px solid rgba(255,255,255,0.7);
-        background: transparent;
-        color: #fff;
-        cursor: pointer;
-        letter-spacing: 1px;
         position: absolute;
-        transition: none;
+        padding: 10px 32px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        border-radius: 40px;
+        border: 1px solid rgba(255,255,255,0.8);
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        white-space: nowrap;
         user-select: none;
+        transition: none;
+        width: auto;           /* 🔒 НЕ РАСТЯГИВАТЬ */
+        min-width: unset;
+        max-width: unset;
     }
 
     #yes {
@@ -73,12 +66,12 @@
     }
 
     #no {
-        right: 40px;
+        left: 170px;
         top: 40px;
     }
 
     button:hover {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.08);
     }
 </style>
 </head>
@@ -86,13 +79,10 @@
 <body>
 
 <div class="container">
-    <div class="subtitle">strawberry flavor</div>
-
-    <div class="heart">Dear</div>
+    <div class="love">Love</div>
 
     <div class="question">
-        Will you open your heart<br>
-        and be my Valentine?
+        Will you be my Valentine?
     </div>
 
     <div class="buttons-area">
@@ -136,13 +126,13 @@
                 justify-content:center;
                 align-items:center;
                 flex-direction:column;
+                gap:30px;
                 color:white;
                 font-family:'Playfair Display', serif;
                 text-align:center;
-                gap:30px;
             ">
                 <h1 style="font-family:'Great Vibes', cursive; font-size:64px;">
-                    I knew it 🤍
+                  🤍
                 </h1>
                 <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="220">
             </div>
