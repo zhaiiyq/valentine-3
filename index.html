@@ -18,7 +18,6 @@
 
     .container {
         text-align: center;
-        position: relative;
     }
 
     h1 {
@@ -29,9 +28,9 @@
 
     .buttons {
         position: relative;
-        width: 360px;
-        height: 120px;
-        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        justify-content: center;
     }
 
     button {
@@ -40,23 +39,21 @@
         border: none;
         border-radius: 30px;
         cursor: pointer;
-        position: absolute;
-        transition: none;
         user-select: none;
+        white-space: nowrap;
     }
 
     #yes {
         background-color: #ff4d6d;
         color: white;
-        left: 0;
-        top: 30px;
     }
 
     #no {
         background-color: white;
         color: #ff4d6d;
-        right: 0;
-        top: 30px;
+        position: fixed;       /* 👈 сразу fixed */
+        width: auto;           /* 👈 не растягивается */
+        max-width: fit-content;
     }
 </style>
 </head>
@@ -81,15 +78,14 @@
         const maxX = window.innerWidth - noButton.offsetWidth - padding;
         const maxY = window.innerHeight - noButton.offsetHeight - padding;
 
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
 
-        noButton.style.position = "fixed";
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
     }
 
-    // реагирует ЗАРАНЕЕ
+    // убегает при приближении
     document.addEventListener("mousemove", (e) => {
         const rect = noButton.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
@@ -123,3 +119,4 @@
 
 </body>
 </html>
+
