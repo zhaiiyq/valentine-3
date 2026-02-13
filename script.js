@@ -38,3 +38,14 @@ function activateNoButton() {
         noBtn.style.top = randomY + "px";
     };
 }
+
+function openStory(num) {
+    document.getElementById("scene4").classList.remove("active");
+    document.getElementById("story" + num).classList.add("active");
+}
+
+function backToHearts() {
+    document.querySelectorAll(".scene").forEach(scene => scene.classList.remove("active"));
+    document.getElementById("scene4").classList.add("active");
+}
+
