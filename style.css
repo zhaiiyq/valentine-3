@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: url("images/bg-texture.jpg");
+    background: url("bg-texture.jpg");
     background-size: cover;
     font-family: 'Georgia', serif;
     display: flex;
