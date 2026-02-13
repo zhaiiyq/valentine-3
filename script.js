@@ -18,16 +18,11 @@ function backToQuestion() {
     document.getElementById("scene2").classList.add("active");
 }
 
-/* 👇 ДОБАВЬ ВОТ ЭТО ВНИЗ */
+/* 🔥 КНОПКА NO УБЕГАЕТ */
 
-document.addEventListener("DOMContentLoaded", function() {
-    const noBtn = document.querySelector(".buttons button:nth-child(2)");
-
-    if (noBtn) {
-        noBtn.addEventListener("mouseover", function() {
-            const x = Math.random() * 200 - 100;
-            const y = Math.random() * 200 - 100;
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    }
-});
+function moveNoButton(button) {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    button.style.position = "relative";
+    button.style.transform = `translate(${x}px, ${y}px)`;
+}
