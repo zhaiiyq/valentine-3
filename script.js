@@ -1,6 +1,7 @@
 function openEnvelope() {
     document.getElementById("scene1").classList.remove("active");
     document.getElementById("scene2").classList.add("active");
+    activateNoButton();
 }
 
 function noAnswer() {
@@ -16,13 +17,24 @@ function yesAnswer() {
 function backToQuestion() {
     document.getElementById("scene3").classList.remove("active");
     document.getElementById("scene2").classList.add("active");
+    activateNoButton();
 }
 
-/* 🔥 КНОПКА NO УБЕГАЕТ */
+/* 🔥 КНОПКА БЕГАЕТ ПО ВСЕМУ ЭКРАНУ */
 
-function moveNoButton(button) {
-    const x = Math.random() * 300 - 150;
-    const y = Math.random() * 300 - 150;
-    button.style.position = "relative";
-    button.style.transform = `translate(${x}px, ${y}px)`;
+function activateNoButton() {
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.style.position = "absolute";
+
+    noBtn.onmouseover = function () {
+        const maxX = window.innerWidth - 100;
+        const maxY = window.innerHeight - 50;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    };
 }
