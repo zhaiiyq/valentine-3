@@ -18,3 +18,16 @@ function backToQuestion() {
     document.getElementById("scene2").classList.add("active");
 }
 
+/* 👇 ДОБАВЬ ВОТ ЭТО ВНИЗ */
+
+document.addEventListener("DOMContentLoaded", function() {
+    const noBtn = document.querySelector(".buttons button:nth-child(2)");
+
+    if (noBtn) {
+        noBtn.addEventListener("mouseover", function() {
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    }
+});
