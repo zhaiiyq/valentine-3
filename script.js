@@ -1,43 +1,12 @@
-function openEnvelope() {
-    document.getElementById("scene1").classList.remove("active");
-    document.getElementById("scene2").classList.add("active");
-
-    setTimeout(() => {
-        activateNoButton();
-    }, 100);
-}
-
-function noAnswer() {
-    document.getElementById("scene2").classList.remove("active");
-    document.getElementById("scene3").classList.add("active");
-}
-
-function yesAnswer() {
-    document.getElementById("scene2").classList.remove("active");
-    document.getElementById("scene4").classList.add("active");
-}
-
-function backToQuestion() {
-    document.getElementById("scene3").classList.remove("active");
-    document.getElementById("scene2").classList.add("active");
-
-    setTimeout(() => {
-        activateNoButton();
-    }, 100);
-}
-
 function activateNoButton() {
     const noBtn = document.getElementById("noBtn");
-    const container = document.querySelector(".buttons");
 
-    if (!noBtn || !container) return; // защита от ошибки
-
-    container.style.position = "relative";
-    noBtn.style.position = "absolute";
+    if (!noBtn) return;
 
     noBtn.onmouseover = function () {
-        const maxX = container.offsetWidth - noBtn.offsetWidth;
-        const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
 
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
@@ -46,4 +15,3 @@ function activateNoButton() {
         noBtn.style.top = randomY + "px";
     };
 }
-
