@@ -1,78 +1,90 @@
 body {
     margin: 0;
-    background: url("bg-texture.jpg");
-    background-size: cover;
-    font-family: 'Georgia', serif;
+    background: #6e0b16;
+    background-image: radial-gradient(circle at center, #8b0015, #5a000f);
+    font-family: 'Playfair Display', serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* сцены */
 .scene {
     display: none;
+    animation: fadeIn 0.8s ease;
 }
 
 .active {
     display: block;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* конверт */
 .envelope {
-    width: 400px;
+    width: 420px;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .envelope:hover {
     transform: scale(1.05);
 }
 
+/* карточка */
 .card {
-    background: #f3e6d6;
-    padding: 40px;
-    border-radius: 10px;
+    background: #f4e6d4;
+    width: 650px;
+    padding: 50px;
     text-align: center;
-    width: 600px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    border: 8px solid #e8d8c3;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 12px solid #e9d8c4;
 }
 
 h1 {
+    font-weight: 400;
     color: #7a0014;
-    font-weight: normal;
+    font-size: 36px;
 }
 
 h1 span {
-    font-style: italic;
-    font-size: 48px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
 }
 
 .buttons {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 button {
     background: #7a0014;
     color: white;
     border: none;
-    padding: 12px 30px;
-    margin: 10px;
+    padding: 14px 35px;
+    margin: 15px;
     font-size: 18px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
     background: #a0001c;
+    transform: scale(1.1);
 }
 
 .cry {
-    width: 200px;
-    margin-top: 20px;
+    width: 220px;
+    margin-top: 25px;
 }
 
 .photo {
-    width: 300px;
-    margin-top: 20px;
-    border-radius: 10px;
+    width: 320px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
-
