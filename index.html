@@ -2,106 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
-
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #5a000f, #8b0015);
-    font-family: 'Georgia', serif;
-}
-
-/* Конверт */
-.envelope {
-    position: relative;
-    width: 420px;
-    height: 260px;
-    background: #b11226;
-    border-radius: 6px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    cursor: pointer;
-    overflow: hidden;
-}
-
-/* Крышка */
-.flap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #9e0f21;
-    clip-path: polygon(0 0, 100% 0, 50% 55%);
-    transform-origin: top;
-    transition: transform 1s ease;
-}
-
-/* Сердце */
-.seal {
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 40px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.2); }
-    100% { transform: translateX(-50%) scale(1); }
-}
-
-/* Открытое состояние */
-.open .flap {
-    transform: rotateX(180deg);
-}
-
-/* Текст */
-.letter {
-    position: absolute;
-    width: 90%;
-    height: 80%;
-    background: #f6e6d6;
-    top: 10%;
-    left: 5%;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1s ease 0.8s;
-}
-
-.open .letter {
-    opacity: 1;
-}
-
-.letter h1 {
-    margin-top: 40px;
-    font-weight: normal;
-    color: #5a000f;
-}
-</style>
+<title>My Valentine ❤️</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="envelope" onclick="openEnvelope()" id="envelope">
-    <div class="flap"></div>
-    <div class="seal">❤️</div>
-    <div class="letter">
-        <h1>Random Day That Means Everything 💌</h1>
+<!-- Сцена 1: Конверт -->
+<div id="scene1" class="scene active">
+    <img src="images/envelope.png" class="envelope" onclick="openEnvelope()">
+</div>
+
+<!-- Сцена 2: Вопрос -->
+<div id="scene2" class="scene">
+    <div class="card">
+        <h1>Will you be<br><span>My Valentine?</span></h1>
+        <div class="buttons">
+            <button onclick="yesAnswer()">YES</button>
+            <button onclick="noAnswer()">NO</button>
+        </div>
     </div>
 </div>
 
-<script>
-function openEnvelope() {
-    document.getElementById("envelope").classList.add("open");
-}
-</script>
+<!-- Сцена 3: Нет -->
+<div id="scene3" class="scene">
+    <div class="card">
+        <h1>Oh, why not, my love?</h1>
+        <img src="images/crying.png" class="cry">
+        <button onclick="backToQuestion()">Go Back</button>
+    </div>
+</div>
 
+<!-- Сцена 4: Да -->
+<div id="scene4" class="scene">
+    <div class="card">
+        <h1>You just made my heart so happy!</h1>
+        <img src="images/yourphoto.jpg" class="photo">
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
