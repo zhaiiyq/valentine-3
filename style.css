@@ -1,108 +1,171 @@
+/* ===== ОСНОВА ===== */
+
 body {
     margin: 0;
-    background: #6e0b16;
-    background-image: radial-gradient(circle at center, #8b0015, #5a000f);
-    font-family: 'Playfair Display', serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: radial-gradient(circle at center, #8b0015 0%, #4a000a 100%);
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
 }
 
-/* сцены */
+/* лёгкий grain-эффект */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* ===== СЦЕНЫ ===== */
+
 .scene {
     display: none;
-    animation: fadeIn 0.8s ease;
+    animation: fadeUp 0.8s ease;
 }
 
 .active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* конверт */
+/* ===== КОНВЕРТ ===== */
+
 .envelope {
     width: 420px;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .envelope:hover {
     transform: scale(1.05);
+    filter: brightness(1.05);
 }
 
-/* карточка */
+/* ===== КАРТОЧКА ===== */
+
 .card {
-    background: #f4e6d4;
-    width: 650px;
-    padding: 50px;
+    background: linear-gradient(145deg, #f5e8d8, #e8d6c0);
+    width: 680px;
+    padding: 70px;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    border: 12px solid #e9d8c4;
+    border-radius: 14px;
+    box-shadow:
+        0 50px 100px rgba(0,0,0,0.6),
+        inset 0 0 40px rgba(0,0,0,0.06);
+    position: relative;
 }
+
+/* ===== ТИПОГРАФИКА ===== */
 
 h1 {
     font-weight: 400;
-    color: #7a0014;
-    font-size: 36px;
+    color: #6b000f;
+    font-size: 40px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
 h1 span {
     font-family: 'Great Vibes', cursive;
-    font-size: 60px;
+    font-size: 70px;
+    display: block;
+    margin-top: 10px;
 }
 
+/* ===== КНОПКИ ===== */
+
 .buttons {
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 button {
-    background: #7a0014;
+    background: #6b000f;
     color: white;
     border: none;
-    padding: 14px 35px;
+    padding: 14px 45px;
     margin: 15px;
-    font-size: 18px;
+    font-size: 16px;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.3s;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 button:hover {
-    background: #a0001c;
-    transform: scale(1.1);
+    background: #8b0015;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
+
+/* ===== ПЛАЧУЩИЙ СТИКЕР ===== */
 
 .cry {
-    width: 220px;
-    margin-top: 25px;
+    width: 240px;
+    margin-top: 30px;
+    animation: bounce 1.2s infinite alternate;
 }
 
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* ===== ФОТО ===== */
+
 .photo {
-    width: 320px;
-    margin-top: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-} 
+    width: 340px;
+    margin-top: 35px;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease;
+}
+
+.photo:hover {
+    transform: scale(1.05);
+}
+
+/* ===== СЕРДЦА ===== */
 
 .hearts {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
+    gap: 60px;
+    margin-top: 40px;
 }
 
 .heart {
-    font-size: 50px;
+    font-size: 60px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .heart:hover {
-    transform: scale(1.3);
+    transform: scale(1.25) rotate(-5deg);
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+/* ===== МЕЛКИЙ ТЕКСТ ===== */
+
+p {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #7a0014;
+    letter-spacing: 1px;
 }
 
