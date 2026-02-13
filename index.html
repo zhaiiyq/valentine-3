@@ -2,171 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-
+<title>For You ❤️</title>
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        background: #8b0015;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Playfair Display', serif;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    background: #8b0015;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+}
 
-    .lace-wrapper {
-        position: relative;
-        width: 85vw;
-        height: 85vh;
-        background: #f5e6c8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.envelope {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background: #b3002d;
+    cursor: pointer;
+    transition: transform 1s;
+}
 
-    /* кружевная рамка */
-    .lace-wrapper::before {
-        content: "";
-        position: absolute;
-        inset: -18px;
-        background:
-            repeating-radial-gradient(
-                circle at top left,
-                transparent 0 10px,
-                rgba(255,255,255,0.9) 10px 14px
-            );
-        border-radius: 18px;
-        z-index: -1;
-    }
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 125px solid #8b0015;
+}
 
-    .lace-wrapper::after {
-        content: "";
-        position: absolute;
-        inset: 12px;
-        border: 2px dotted rgba(139,0,21,0.35);
-        border-radius: 10px;
-        pointer-events: none;
-    }
+.heart {
+    position: absolute;
+    top: 90px;
+    left: 170px;
+    font-size: 40px;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
 
-    .container {
-        text-align: center;
-        color: #5b1a1a;
-    }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
 
-    .love {
-        font-family: 'Great Vibes', cursive;
-        font-size: 64px;
-        margin-bottom: 20px;
-    }
+.message {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    opacity: 0;
+    transition: opacity 1s;
+}
 
-    .question {
-        font-size: 32px;
-        margin-bottom: 50px;
-    }
-
-    .buttons-area {
-        position: relative;
-        width: 320px;
-        height: 120px;
-        margin: 0 auto;
-    }
-
-    button {
-        position: absolute;
-        padding: 10px 32px;
-        font-size: 14px;
-        letter-spacing: 2px;
-        border-radius: 40px;
-        border: 1px solid rgba(91,26,26,0.6);
-        background: transparent;
-        color: #5b1a1a;
-        cursor: pointer;
-        white-space: nowrap;
-        user-select: none;
-        transition: none;
-    }
-
-    #yes {
-        left: 40px;
-        top: 40px;
-    }
-
-    #no {
-        left: 170px;
-        top: 40px;
-    }
-
-    button:hover {
-        background: rgba(91,26,26,0.06);
-    }
+.show {
+    opacity: 1;
+}
 </style>
 </head>
 
 <body>
 
-<div class="lace-wrapper">
-    <div class="container">
-        <div class="love">Love</div>
+<div class="envelope" onclick="openLetter()">
+    <div class="heart">❤️</div>
+</div>
 
-        <div class="question">
-            Will you be my Valentine?
-        </div>
-
-        <div class="buttons-area">
-            <button id="yes">YES</button>
-            <button id="no">NO</button>
-        </div>
-    </div>
+<div class="message" id="message">
+    Random Day That Means Everything 💌
 </div>
 
 <script>
-    const noButton = document.getElementById("no");
-    const area = document.querySelector(".buttons-area");
-
-    function moveNoButton() {
-        const maxX = area.clientWidth - noButton.offsetWidth;
-        const maxY = area.clientHeight - noButton.offsetHeight;
-
-        noButton.style.left = Math.random() * maxX + "px";
-        noButton.style.top = Math.random() * maxY + "px";
-    }
-
-    area.addEventListener("mousemove", (e) => {
-        const rect = noButton.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 70) {
-            moveNoButton();
-        }
-    });
-
-    document.getElementById("yes").addEventListener("click", () => {
-        document.body.innerHTML = `
-            <div style="
-                height:100vh;
-                background:#8b0015;
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                flex-direction:column;
-                gap:30px;
-                color:white;
-                font-family:'Playfair Display', serif;
-                text-align:center;
-            ">
-                <h1 style="font-family:'Great Vibes', cursive; font-size:64px;">
-                    I knew it 🤍
-                </h1>
-                <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="220">
-            </div>
-        `;
-    });
+function openLetter() {
+    document.querySelector(".envelope").style.transform = "scale(0)";
+    setTimeout(function() {
+        document.getElementById("message").classList.add("show");
+    }, 800);
+}
 </script>
 
 </body>
