@@ -26,9 +26,9 @@ body {
 
 /* конверт */
 .envelope {
-    width: 420px;
+    width: 520px;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .envelope:hover {
