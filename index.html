@@ -21,7 +21,7 @@
 <!-- Сцена 2: Вопрос -->
 <div id="scene2" class="scene">
     <div class="card">
-        <h1>Will you be<br><span>My Valentine?</span></h1>
+        <h1>Babe, Will you be<br><span>My Valentine?</span></h1>
         <div class="buttons">
             <button onclick="yesAnswer()">YES</button>
             <button id="noBtn" onclick="noAnswer()">NO</button>
@@ -41,51 +41,10 @@
 <!-- Сцена 4: Фото -->
 <div id="scene4" class="scene">
     <div class="card">
-        <h1>You just made my heart so happy!</h1>
         <img src="yourphoto.jpg" class="photo">
-        <button onclick="goToHearts()">Next</button>
     </div>
 </div>
 
-<!-- Сцена 5: Выбор сердечка -->
-<div id="scene4" class="scene">
-    <div class="card">
-        <h1>Every moment with you is my favorite memory</h1>
-        <div class="hearts">
-            <div class="heart" onclick="openStory(1)">❤️</div>
-            <div class="heart" onclick="openStory(2)">❤️</div>
-            <div class="heart" onclick="openStory(3)">❤️</div>
-        </div>
-        <p>Choose one</p>
-    </div>
-</div>
-
-<!-- История 1 -->
-<div id="story1" class="scene">
-    <div class="card">
-        <h1>Our First Date 💌</h1>
-        <img src="yourphoto.jpg" class="photo">
-        <button onclick="backToHearts()">Back</button>
-    </div>
-</div>
-
-<!-- История 2 -->
-<div id="story2" class="scene">
-    <div class="card">
-        <h1>That Random Day ❤️</h1>
-        <p>Insert your romantic text here...</p>
-        <button onclick="backToHearts()">Back</button>
-    </div>
-</div>
-
-<!-- История 3 -->
-<div id="story3" class="scene">
-    <div class="card">
-        <h1>Forever With You 💕</h1>
-        <p>Insert another memory here...</p>
-        <button onclick="backToHearts()">Back</button>
-    </div>
-</div>
 
 <script src="script.js"></script>
 </body>
