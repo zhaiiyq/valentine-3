@@ -40,7 +40,7 @@ function activateNoButton() {
 }
 
 function openStory(num) {
-    document.getElementById("scene4").classList.remove("active");
+    document.getElementById("scene5").classList.remove("active");
     document.getElementById("story" + num).classList.add("active");
 }
 
@@ -49,3 +49,7 @@ function backToHearts() {
     document.getElementById("scene4").classList.add("active");
 }
 
+function goToHearts() {
+    document.getElementById("scene4").classList.remove("active");
+    document.getElementById("scene5").classList.add("active");
+}
